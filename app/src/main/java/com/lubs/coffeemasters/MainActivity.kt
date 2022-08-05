@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun FirstComposables(){
+fun FirstComposable(){
 
     var name = remember {mutableStateOf("")}
 
@@ -47,6 +47,7 @@ fun FirstComposables(){
         Text(
             "Hello ${name.value}",
             modifier = Modifier
+
                 .padding(16.dp)
                 .background(Yellow)
                 .padding(16.dp)

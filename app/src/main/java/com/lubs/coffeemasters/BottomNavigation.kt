@@ -2,9 +2,10 @@ package com.lubs.coffeemasters
 
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Info
@@ -40,6 +41,28 @@ fun BottomNavigation_Preview(){ // Custom modifier applied to the root property.
 }
 
 @Composable
+fun NavBar(selectedRoute: String = Routes.MenuPage.route,
+            onChange: (String) -> Unit
+           ){
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colors.primary)
+            .padding(16.dp)
+    ){    // Render one nav item at a time
+        for(page in Routes.pages){
+            NavBarItem(page = page,
+            selected = selectedRoute == page.route,
+            modifier = Modifier.clickable {
+    onChange(page.route)
+            }
+                )
+        }
+    }
+}
+
+@Composable
 fun NavBarItem(page: BottomNavigation, selected: Boolean = false, modifier: Modifier = Modifier) {
     Column(horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier.padding(horizontal = 12.dp)) {
@@ -47,7 +70,7 @@ fun NavBarItem(page: BottomNavigation, selected: Boolean = false, modifier: Modi
             imageVector = page.icon,
             contentDescription = page.name,
             colorFilter = ColorFilter.tint(
-                if (selected) Alternative1 else OnPrimary
+                if (selected) OnPrimary else Alternative1
             ),
             modifier = Modifier
                 .padding(bottom = 8.dp)
@@ -55,7 +78,7 @@ fun NavBarItem(page: BottomNavigation, selected: Boolean = false, modifier: Modi
         )
         Text(page.name,
             fontSize = 12.sp,
-            color = if (selected) Alternative1 else OnPrimary
+            color = if (selected)  OnPrimary else Alternative1
         )
     }
 }
