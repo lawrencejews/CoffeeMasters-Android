@@ -18,11 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
 import com.lubs.coffeemasters.ui.theme.CoffeeMastersTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        var dataManager = ViewModelProvider(this)
+            .get(DataManager::class.java) // Pass a class as an argument.
+
         setContent {
             CoffeeMastersTheme {
                 // A surface container using the 'background' color from the theme
@@ -30,7 +35,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    App()
+                    App(dataManager)
                 }
             }
         }

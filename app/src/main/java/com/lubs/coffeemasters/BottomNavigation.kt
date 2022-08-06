@@ -55,7 +55,7 @@ fun NavBar(selectedRoute: String = Routes.MenuPage.route,
             NavBarItem(page = page,
             selected = selectedRoute == page.route,
             modifier = Modifier.clickable {
-    onChange(page.route)
+                    onChange(page.route)
             }
                 )
         }
