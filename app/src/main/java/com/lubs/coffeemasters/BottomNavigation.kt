@@ -27,9 +27,9 @@ data class BottomNavigation(var name: String, var icon: ImageVector, var route: 
 
 object  Routes {
     val MenuPage = BottomNavigation("Menu", Icons.Outlined.Menu, "menu")
-    val OfferPage = BottomNavigation("Offers", Icons.Outlined.Star, "menu")
-    val OrderPage = BottomNavigation("My Order", Icons.Outlined.ShoppingCart, "menu")
-    val InfoPage = BottomNavigation("Info", Icons.Outlined.Info, "menu")
+    val OfferPage = BottomNavigation("Offers", Icons.Outlined.Star, "offers")
+    val OrderPage = BottomNavigation("My Order", Icons.Outlined.ShoppingCart, "order")
+    val InfoPage = BottomNavigation("Info", Icons.Outlined.Info, "info")
 
     val pages = listOf(MenuPage, OfferPage, OrderPage, InfoPage)
 }

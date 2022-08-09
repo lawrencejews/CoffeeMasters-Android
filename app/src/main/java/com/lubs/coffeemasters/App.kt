@@ -28,7 +28,7 @@ import com.lubs.coffeemasters.pages.OrderPage
 fun App(dataManager: DataManager) {
     // Defining the state
     var selectedRoute = remember {
-        mutableStateOf(Routes.MenuPage.route)
+        mutableStateOf("menu")
     }
 
     Scaffold (
@@ -50,8 +50,8 @@ fun App(dataManager: DataManager) {
         bottomBar ={
         NavBar(
             selectedRoute = selectedRoute.value,
-            onChange = {
-            selectedRoute.value = it
+            onChange = { newRoute ->
+            selectedRoute.value = newRoute
         })
         }
     )
